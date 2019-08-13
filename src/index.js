@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'Bootstrap-css-only/css/bootstrap.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import { MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBIcon, MDBBadge, MDBContainner, MDBRow, MDBCol } from 'mdbreact';
+import { MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBIcon, MDBBadge, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import './index.css';
 
 
@@ -48,7 +48,8 @@ class App extends Component {
         newArray.push({
             id: newArray.length ? newArray[newArray.length - 1].id + 1 : 1,
             time: this.state.time,
-            title: this.state.location,
+            title: this.state.title,
+            location: this.state.location,
             description: this.state.description
         });
         this.setState({ events: newArray });
@@ -87,14 +88,14 @@ class App extends Component {
                             <h2 className='text-uppercase my-3'>Today:</h2>
                             <div id='events'>
                                 {this.state.events.map(event => ( 
-                                    <Event
-                                        key={event.id}
-                                        id={event.id}
-                                        time={event.time}
-                                        title={event.title}
-                                        location={event.location}
-                                        description={event.description}
-                                        onDelete={this.handleDelete}
+                                        <Event
+                                            key={event.id}
+                                            id={event.id}
+                                            time={event.time}
+                                            title={event.title}
+                                            location={event.location}
+                                            description={event.description}
+                                            onDelete={this.handleDelete}
                                         /> 
                                     ))
                                 }
@@ -187,7 +188,7 @@ class App extends Component {
                     <MDBModalFooter>
                         <MDBBtn
                             color='info'
-                            onCLick={()=>{ this.toggleModal(); this.addEvent(); }}
+                            onClick={()=>{ this.toggleModal(); this.addEvent(); }}
                         >Add</MDBBtn>
                     </MDBModalFooter>           
                 </MDBModal>
@@ -210,7 +211,7 @@ class Event extends Component {
                         <MDBBadge
                             color='danger'
                             className='ml-2 float-right'
-                            onClikc={ ()=> this.props.onDelete(this.props.id) }
+                            onClick={ ()=> this.props.onDelete(this.props.id) }
                         >-</MDBBadge>
                         <h6 className='mt-0 font-weight-bold'>
                             {this.props.title}
@@ -227,7 +228,7 @@ class Event extends Component {
                     </div>
                 </div>
                 {this.props.description && (
-                    <p classNmae='p-2 mb-4 blue-grey lighten-5'>
+                    <p className='p-2 mb-4 blue-grey lighten-5'>
                         {this.props.description}
                     </p>
                 )}
