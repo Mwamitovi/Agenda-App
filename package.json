@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "core-js": "3",
+    "joi": "14.3.1",
+    "kleur": "3",
     "mdbreact": "4.9.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
@@ -19,6 +21,11 @@
     "remove-demo": "rimraf ./src/font ./src/img ./src/pages ./src/Routes.js ./src/App.js && npm run rename"
   },
   "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
     "renamer": "^1.0.0",
     "rimraf": "^2.6.2"
   },
@@ -27,5 +34,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "peerDependencies": {
+    "prop-types": "15.6.0"
+  }
 }
